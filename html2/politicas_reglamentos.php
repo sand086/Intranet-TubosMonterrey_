@@ -206,7 +206,7 @@ grid-template-columns: repeat(1,100%);
           <article>
             <figure>
               <a href="#" target="_blank">
-                <img src="/intranet/html/img/Imagenvestimenta.jpg" width="100%" class="" alt="">
+                <img src="/Intranet-TubosMonterrey/html/img/Imagenvestimenta.jpg" width="100%" class="" alt="">
               </a>
             </figure>
           </article>
@@ -215,7 +215,7 @@ grid-template-columns: repeat(1,100%);
           <article>
             <figure>
               <a href="#" target="_blank">
-                <img src="/intranet/html/img/dias feriados.jpg" width="100%"  alt="">
+                <img src="/Intranet-TubosMonterrey/html/img/dias feriados.jpg" width="100%"  alt="">
               </a>
             </figure>
           </article>
@@ -225,7 +225,7 @@ grid-template-columns: repeat(1,100%);
         <article>
             <figure>
               <a href="#" target="_blank">
-                <img src="/intranet/html/img/prestaciones.jpg" width="100%"  alt="">
+                <img src="/Intranet-TubosMonterrey/html/img/prestaciones.jpg" width="100%"  alt="">
               </a>
             </figure>
           </article>
@@ -234,7 +234,7 @@ grid-template-columns: repeat(1,100%);
         <article>
             <figure>
               <a href="#" target="_blank">
-                <img src="/intranet/html/img/Imagen horario.jpg" width="100%" alt="">
+                <img src="/Intranet-TubosMonterrey/html/img/Imagen horario.jpg" width="100%" alt="">
               </a>
             </figure>
           </article>
@@ -245,7 +245,7 @@ grid-template-columns: repeat(1,100%);
         <article>
             <figure>
               <a href="#" target="_blank">
-                <img src="/intranet/html/img/POLITICAS COMEDOR.jpg"  width="100%"  alt="">
+                <img src="/Intranet-TubosMonterrey/html/img/POLITICAS COMEDOR.jpg"  width="100%"  alt="">
               </a>
             </figure>
           </article>

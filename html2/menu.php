@@ -2,7 +2,7 @@
       <div class="navbar-bg  d-lg-none"></div>
       <nav class="navbar navbar-expand-lg main-navbar   d-lg-none">
         <a href="index.html" class="navbar-brand sidebar-gone-hide">
-          <img src="/intranet/html/img/TubosMonterreyLogo.svg">
+          <img src="/Intranet-TubosMonterrey/html/img/TubosMonterreyLogo.svg">
         </a>
         <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
 
@@ -13,7 +13,7 @@
           <ul class="navbar-nav">
             <li class="nav-item ">
               <a href="#" class="nav-link navbar-brand">
-                <img src="/intranet/html/img/TubosMonterreyLogo.svg" width="160" alt="" style="margin-top: 16px;">
+                <img src="/Intranet-TubosMonterrey/html/img/TubosMonterreyLogo.svg" width="160" alt="" style="margin-top: 16px;">
               </a>
             </li>
 

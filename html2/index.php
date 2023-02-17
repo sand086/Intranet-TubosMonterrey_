@@ -16,8 +16,15 @@
   <link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
   
   <link rel="stylesheet" href="assets/modules/fullcalendar/fullcalendar.min.css">
+<!-- 
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
 
+
+ -->
+
+ <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -45,72 +52,15 @@
 <body class="layout-3">
   <div id="app">
     <?php require_once('menu.php') ?>
-    <?php require_once('celebraciones.php') ?>
+    <?php require_once('anuncios.php') ?>
     <?php require_once('politicas_reglamentos.php'); ?>
     <?php require_once('cobertura.php'); ?>
     <?php require_once('timeline_nuestrahistoria.php'); ?>
     <?php require_once('directorio.php'); ?>
-	
-
-    <style>
-      .fc-day-grid-event > .fc-content {
-        white-space: normal;
-      }
-    </style>
-    <div class="">
-      <section class=" mt-5">
-        <h1 class="mb-1">CUMPLEAÑOS DEL MES</h1>
-
-
-        <div class="">
-        <section class="section">
-
-
-          <div class="section-body">
-
-            <div class="row">
-              <div class="col-sm-12 col-md-10">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Calendar</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="fc-overflow">                            
-                      <div id="calendar"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-2">
-
-                <div class="card">
-                  Cumpleaños Azul
-                  Dias festivos verde
-                  Descanso obligatorio rojo
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-         
-      </section>
-    </div>
-
-
-
-
-
-    <footer class="main-footer">
-      <div class="footer-left">
-        Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-      </div>
-      <div class="footer-right">
-        
-      </div>
-    </footer>
+	<?php require_once('celebraciones.php'); ?>
+	<?php require_once('aniversarios.php'); ?>
+	<?php require_once('organigrama.php'); ?>
+	<?php require_once('footer.php'); ?>
     
   </div>
 
@@ -560,5 +510,84 @@ $("#calendar").fullCalendar({
 });
 
   </script>
+<!-- 
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+		  
+	  $('.slider').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  autoplay: true,
+	  autoplaySpeed: 1500,
+	  centerMode: true,
+	  dots: true,
+infinite: true,
+centerPadding: '100px',
+	  responsive: [
+		  {
+	breakpoint: 1024,
+	settings: {
+	  slidesToShow: 3,
+	  slidesToScroll: 3,
+	  infinite: true,
+	  dots: true
+	}
+  },
+  {
+	breakpoint: 768,
+	settings: {
+	  arrows: false,
+	  centerMode: true,
+	  centerPadding: '40px',
+	  slidesToShow: 3
+	}
+  },
+  {
+	breakpoint: 480,
+	settings: {
+	  arrows: false,
+	  centerMode: true,
+	  centerPadding: '40px',
+	  slidesToShow: 1
+	}
+  }
+],
+
+	  });
+  });
+</script>
+ -->
+
+ <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
+<script>
+	$("#users-carousel").owlCarousel({
+		dots:true,
+		slideTransition:'linear',
+  margin: 20,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  loop: true,
+  responsive: {
+	0: {
+      items: 1
+    },
+    380: {
+      items: 2
+    },
+    650: {
+      items: 3
+    },
+    800: {
+      items: 4
+    },
+    1024: {
+      items: 6
+    }
+  }
+});
+
+</script>
 </body>
 </html>
