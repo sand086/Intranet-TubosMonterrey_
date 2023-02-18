@@ -589,5 +589,161 @@ centerPadding: '100px',
 });
 
 </script>
+
+
+
+
+<script>
+
+    var chart = new OrgChart(document.getElementById("tree"), {
+  
+    mouseScrool: OrgChart.action.none,
+    menu: {
+            pdf: { text: "Export PDF" },
+            png: { text: "Export PNG" },
+            svg: { text: "Export SVG" },
+            csv: { text: "Export CSV" },
+            json: { text: "Export JSON" }
+        },
+    enableSearch: false,
+    nodeBinding: {
+        field_0: "name",
+        img_0 : "photo1" , 
+        field_1: "title",
+    },
+    template:"ula",
+    enableDragDrop: true,
+/*     nodes: [
+      { id: 1, name: "Denny Curtis", title: "CEO", photo1: "https://cdn.balkan.app/shared/1.jpg"},
+    { id: 2, pid: 1, name: "Ashley Barnett", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
+    { id: 3, pid: 1, name: "Caden Ellison", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
+    { id: 4, pid: 1, ppid: 3, name:"Mauricio Rocha"},
+
+    ] */
+});
+
+
+
+$("#mSelect").change(function(){
+
+  var title_org = '';
+var empleados_array = '';
+var title ='';
+var area = '';
+
+title = document.createElement("h1");
+      title.style.position = 'absolute';
+      title.style.top = 0;
+      title.style.width = '100%';
+      title.style.textAlign = 'center';
+      title.style.color = '#757575';
+      title.style.margin = '60px auto 10px auto';
+
+
+  console.log(title);
+
+	var area = $(this).val();
+
+  console.log($(this).val());
+
+	switch(area){
+    case "1":
+      
+      title_org = 'telemarketing';
+
+      break;
+    case "2":
+ 
+      title_org = 'ventas_industriales';
+ 
+      break;
+    case "3":
+ 
+      title_org = 'ventas_calle';
+ 
+      break;
+    case "4":
+ 
+      title_org = 'compras';
+ 
+      break;
+    case "5":
+ 
+      title_org = 'contabilidad';
+ 
+      break;
+    case "6":
+ 
+      title_org = 'credito_y_cobranza';
+ 
+      break;
+    case "7":
+ 
+      title_org = 'capital_humano';
+ 
+      break;
+    case "8":
+ 
+      title_org = 'tesoreria';
+ 
+      break;
+    case "9":
+ 
+      title_org = 'servicios_generales';
+ 
+      break;
+    case "10":
+ 
+      title_org = 'logistica_y_distribuion';
+ 
+      break;
+    case "11":
+
+      console.log('sd');
+      title_org = 'operaciones';
+      empleados_array = 
+        [
+          { id: 1, name: "Denny Curtis", title: "CEO", photo1: "https://cdn.balkan.app/shared/1.jpg"},
+          { id: 2, pid: 1, name: "Ashley Barnett", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
+          { id: 3, pid: 1, name: "Caden Ellison", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
+          { id: 4, pid: 1, ppid: 3, name:"Mauricio Rocha"}
+        ];
+
+
+
+      break;
+
+    default:
+     // console.log("No tengo area");
+      break;
+
+  }
+
+
+
+
+
+      title.innerHTML = title_org;
+      chart.element.appendChild(title);
+
+  
+      
+
+
+  chart.load(empleados_array);
+
+
+  console.log(title);
+        
+
+  
+
+
+
+});
+
+
+</script>
+
 </body>
 </html>
