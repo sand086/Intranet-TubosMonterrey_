@@ -106,6 +106,30 @@ public $conexion;
   }
 
 
+
+
+
+  public function seleccionarcount($select, $tabla, $condicion)
+  {
+
+    $params = array();
+    $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+    $resultado = sqlsrv_query($this->conexion,"SELECT $select FROM $tabla $condicion" ,  $params ,$options );
+
+
+  
+
+    if($resultado === false) {
+       // return false;
+        die(var_dump(sqlsrv_errors(), true));
+    }else{
+        
+        return $resultado;
+    }
+    return false;
+  }
+  
+
 }
 
 

@@ -210,28 +210,37 @@
                     </div>
                   </form>
 
-                  <div class="filter-result">
-                    <p class="mb-30 ff-montserrat">Total empleados : 89</p>
-
-                    <div class="salida"></div>
-
-
-                    <?php
+                  <?php
                  //   require "assets/php/bd.php";
                    
 
 
                     $user = new conBD();
-                    $u = $user->seleccionar(
+                    $totalEmpleados = $user->seleccionarcount(
+                      "*",
                         "empleados",
-                        " estatus = 1 order by nombre ASC "
+                        " WHERE estatus = 1 "
                     );
 
+                    $totalEmpleados = sqlsrv_num_rows( $totalEmpleados );
+                    ?>
+
+                  <div class="filter-result">
+                    <p class="mb-30 ff-montserrat">Total empleados : <?php echo $totalEmpleados ?></p>
+
+                    <div class="salida"></div>
+
+
+
+                    <?php
                     
 
                  //    var_dump( count(sqlsrv_fetch_array($u, SQLSRV_FETCH_ASSOC)) );
 
-       
+                    $u = $user->seleccionar(
+                      "empleados",
+                      " estatus = 1 order by nombre ASC "
+                  );
 
 
                     $html = "";

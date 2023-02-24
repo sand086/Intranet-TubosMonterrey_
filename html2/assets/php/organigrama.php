@@ -21,7 +21,9 @@
     $select .=  $tabla.".apellido_mat, ";
     $select .=  $tabla.".puesto_id, ";
     $select .=  $tabla.".foto, ";
-    $select .=  $tabla2.".nombre AS puesto ";
+    $select .=  $tabla2.".nombre AS puesto, ";
+    $select .=  $tabla2.".nivel";
+
 
 
   //  var_dump( $select );
@@ -29,7 +31,7 @@
     $condicion = " INNER JOIN ".$tabla2." ON ".$tabla2.".id_puestos = ".$tabla." .puesto_id
                    WHERE ".$tabla." .estatus = 1 AND ".$tabla.".area_id = ".$POST->area_id." order by ".$tabla.".puesto_id ASC ";
    
- //  var_dump("SELECT $select FROM $tabla $condicion");
+   //var_dump("SELECT $select FROM $tabla $condicion");
     $empleados_org = new conBD();
     $array_empleados_org = $empleados_org->seleccionarJoinOrg( $select, $tabla,  $condicion); 
     $html = '';
@@ -44,7 +46,8 @@
 
             "nombreCompleto" => $row['nombre'].' '. $row['apellido_pat'].' '. $row['apellido_mat'],
             "puesto" => $row['puesto'],
-            "puesto_id" => $row['puesto_id']
+            "puesto_id" => $row['puesto_id'],
+            "nivel" =>  $row['nivel']
         );
 
 

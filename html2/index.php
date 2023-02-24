@@ -638,7 +638,6 @@ $("#slider_news").owlCarousel({
             pdf: { text: "Export PDF" },
             png: { text: "Export PNG" },
             svg: { text: "Export SVG" },
-            csv: { text: "Export CSV" },
             json: { text: "Export JSON" }
         },
     enableSearch: false,
@@ -649,13 +648,7 @@ $("#slider_news").owlCarousel({
     },
     template:"ula",
     enableDragDrop: true,
-/*     nodes: [
-      { id: 1, name: "Denny Curtis", title: "CEO", photo1: "https://cdn.balkan.app/shared/1.jpg"},
-    { id: 2, pid: 1, name: "Ashley Barnett", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
-    { id: 3, pid: 1, name: "Caden Ellison", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
-    { id: 4, pid: 1, ppid: 3, name:"Mauricio Rocha"},
 
-    ] */
 });
 
 
@@ -775,14 +768,14 @@ title = document.createElement("h1");
 
               var response_data = JSON.parse(response);
 
-              console.log(JSON.parse(response));
+             console.log(response);
 
 
-              for(let item = 0; item < response_data.length; item++){
+              for(let item = 0; item < response_data.length ; item++){
                 console.log(item);
 
 
-                if(item = 0){
+                if(response_data[item].nivel == 0){
                     empleados = { 
                     id: item+1, 
                     name: response_data[item].nombreCompleto, 
@@ -790,32 +783,23 @@ title = document.createElement("h1");
                     photo1: "https://cdn.balkan.app/shared/1.jpg"
                   
                   };
+                  console.log(empleados);
                 }else{
 
-                  console.log("entra");
+                 
 
                   var puesto = response_data[item].puesto;
-
-                  if(puesto.includes('Director')){var pid = 2;}
-                  else if(puesto.includes('Gerente')){var pid = 3;}
-                  else if(puesto.includes('Asistente')){var pid = 4;}
-                  else if(puesto.includes('Coordinador')){var pid = 5;}
-                  else if(puesto.includes('Auditor')){var pid = 6;}
-                  else if(puesto.includes('Auxiliar')){var pid = 7;}
-                  else if(puesto.includes('Jefe')){var pid = 8;}
-                  else{
-                    pid = 1;
-                  }
+                   console.log(puesto);
 
 
                   empleados = { 
                     id: item+1,
-                    pid:  pid,
+                    pid:  response_data[item].nivel,
                     name: response_data[item].nombreCompleto, 
                     title: response_data[item].puesto, 
                     photo1: "https://cdn.balkan.app/shared/1.jpg"
                   
-                  };
+                  }; 
 
                 }
 
@@ -823,12 +807,12 @@ title = document.createElement("h1");
                 
 
                 empleados_array.push(empleados);
-                console.log(empleados_array);
+      
                 
               }
 
 
-
+              console.log(empleados_array);
 
                  
                   title.innerHTML = title_org;
