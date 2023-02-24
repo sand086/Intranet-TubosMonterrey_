@@ -420,14 +420,16 @@ Main Components
 		<div class="events-wrapper">
 			<div class="events" style="font-size: small;">
 				<ol>
-					<li><a href="#0" data-date="01/08/2017" class="selected text-dark" style="font-size: 14px;">Jan 2017</a></li>
-					<li><a href="#0" data-date="01/09/2017"  class=" text-dark" style="font-size: 14px;">Sep 2017</a></li>
-					<li><a href="#0" data-date="01/12/2017"  class=" text-dark" style="font-size: 14px;">Dec 2017</a></li>
-					<li><a href="#0" data-date="01/03/2018"  class=" text-dark" style="font-size: 14px;">Mar 2018</a></li>
-					<li><a href="#0" data-date="09/05/2018"  class=" text-dark" style="font-size: 14px;">June 2018</a></li>
-          <li><a href="#0" data-date="01/01/2019"  class=" text-dark" style="font-size: 14px;">Jan 2019</a></li>
+					<li><a href="#0" data-date="01/02/1944" class="selected text-dark" style="font-size: 14px;">1944</a></li>
+					<li><a href="#0" data-date="01/06/1944"  class=" text-dark" style="font-size: 14px;">1948</a></li>
+					<li><a href="#0" data-date="01/08/1944"  class=" text-dark" style="font-size: 14px;">1960</a></li>
+					<li><a href="#0" data-date="01/11/1944"  class=" text-dark" style="font-size: 14px;">1974</a></li>
+					<li><a href="#0" data-date="01/01/1945"  class=" text-dark" style="font-size: 14px;">1980</a></li>
+          <li><a href="#0" data-date="01/02/1945"  class=" text-dark" style="font-size: 14px;">1980</a></li>
+          <li><a href="#0" data-date="01/04/1945"  class=" text-dark" style="font-size: 14px;">1988</a></li>
+          <li><a href="#0" data-date="01/06/1945"  class=" text-dark" style="font-size: 14px;">2020</a></li>
 				</ol>
-
+        
 				<span class="filling-line" aria-hidden="true"></span>
 			</div> <!-- .events -->
 		</div> <!-- .events-wrapper -->
@@ -440,94 +442,69 @@ Main Components
 
 	<div class="events-content">
 		<ol>
-			<li class="selected" data-date="16/01/2014">
-				<h2>An Introduction to Infosec</h2>
-        <em>January, 2017</em>
+			<li class="selected" data-date="01/02/1944">
+				<h2>Fundación</h2>
+        <em>1944</em>
 				<p>	
-					Back in January, 2017 I began my journey of studies into different areas of infosec to see if it was a challenge I would enjoy and a future prospect for further learning through college.
+					El Sr. Antolin Ruiz Arce funda una empresa familiar comercializadora, manejaba pocos productos y poco volumen.
 				</p>
 			</li>
 
-			<li data-date="01/09/2017">
-				<h2>Fanshawe College Cyber Security</h2>
-				<em>September, 2017</em>
+			<li data-date="01/06/1944">
+				<h2>Comienzo</h2>
+				<em>1948</em>
 				<p>	
-					In September, 2018 I enrolled into the Cyber Security course at Fanshawe College.
-				</p><br>
-        <p>Key courses include: </p>
+          Surge la asociacion del Sr. Jose Ruiz Arce y un primo, instalandose en Fray Servando Teresa de Mier denominado "Tuberia Nacional, S.A."    
+        </p>
 			</li>
 
-			<li data-date="01/12/2017">
-				<h2>CTF</h2>
-				<em>December, 2017</em>
+			<li data-date="01/08/1944">
+				<h2>Transformación</h2>
+				<em>1960</em>
 				<p>	
-					Participated in CTF.
+					Debido a las exigencias del mercado, se reubican en Isabel la Ctolica, restructurando la empresa y dirigida unicamente po los Sres. Ruiz Arce.
 				</p>
 			</li>
 
-			<li data-date="01/03/2018">
-				<h2>Event title here</h2>
-				<em>May 20th, 2014</em>
+			<li data-date="01/11/1944">
+				<h2>Consolidación</h2>
+				<em>1974</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Otra empresa habia tomado el nomb de Tuberia Nacional y asi surge Tubos monterrey, S.A de C.V. nombre que se le da por la realcion que tiene Monterrey con el acero.
+
 				</p>
 			</li>
 
-			<li data-date="09/07/2014">
-				<h2>Event title here</h2>
-				<em>July 9th, 2014</em>
+			<li data-date="01/01/1945">
+				<h2>Reubicación</h2>
+				<em>1980</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Despues de un tiempo se instala la bodega en la colonia industrial vallejo, accion que fortalece a la empresa y aumenta susu clientes.
+			</li>
+
+      <li data-date="01/02/1945">
+				<h2>Reubicación</h2>
+				<p>	
+					Se integra oficialmente el Lic. José Antonio Ruiz de la Vega hijo del Sr. Jose Ruiz Arce, como diector general de la empresa.
+			</li>
+
+			<li data-date="01/04/1945">
+				<h2>Expansión</h2>
+				<em>1988</em>
+				<p>	
+					Se abre una bodega en la calle de noe 35 no. 839. En otal la superficie de amb dicciones nos da un total de 12 000 m2
 				</p>
 			</li>
 
-			<li data-date="30/08/2014">
-				<h2>Event title here</h2>
-				<em>August 30th, 2014</em>
+			<li data-date="01/06/1945">
+				<h2>Actualidad</h2>
+				<em>2020</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Dentro del giro ferretero Tubos Monterrey es una empresa consolidada y conocida a nivel nacional, principalmente po la diversidad y volumen de productos que maneja hoy en dia.
 				</p>
 			</li>
 
-			<li data-date="15/09/2014">
-				<h2>Event title here</h2>
-				<em>September 15th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
 
-			<li data-date="01/11/2014">
-				<h2>Event title here</h2>
-				<em>November 1st, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="10/12/2014">
-				<h2>Event title here</h2>
-				<em>December 10th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="19/01/2015">
-				<h2>Event title here</h2>
-				<em>January 19th, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="03/03/2015">
-				<h2>Event title here</h2>
-				<em>March 3rd, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
 		</ol>
 	</div> <!-- .events-content -->
 </section>

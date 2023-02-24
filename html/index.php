@@ -716,9 +716,9 @@ $serverName = "HONOR\HONOR";
 
 
                     <?php
-                    require 'php/bd.php';
+                   // require 'php/bd.php';
 
-                    $user = new conBD();
+                  /*   $user = new conBD();
                     $u = $user->seleccionar("empleados", " status = 1 order by nombre ASC ");
 
                     //   print_r($u ); 
@@ -763,7 +763,7 @@ $serverName = "HONOR\HONOR";
                       }
 
                       echo  $html;
-                    }
+                    } */
 
                     ?>
 

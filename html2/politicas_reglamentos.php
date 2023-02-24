@@ -118,6 +118,7 @@ color: #fff;
 [value="horario"]:checked ~ .filters [for="horario"],
 [value="prestaciones"]:checked ~ .filters [for="prestaciones"],
 [value="dias_feriados"]:checked ~ .filters [for="dias_feriados"],
+[value="seguridad"]:checked ~ .filters [for="seguridad"],
 [value="vestimenta"]:checked ~ .filters [for="vestimenta"]
 {
 background: #30509d;
@@ -132,9 +133,12 @@ display: block;
 [value="horario"]:checked ~ .posts .post:not([data-category~="horario"]),
 [value="prestaciones"]:checked ~ .posts .post:not([data-category~="prestaciones"]),
 [value="dias_feriados"]:checked ~ .posts .post:not([data-category~="dias_feriados"]),
+[value="seguridad"]:checked ~ .posts .post:not([data-category~="seguridad"]),
+
 [value="vestimenta"]:checked ~ .posts .post:not([data-category~="vestimenta"]) {
 display: none;
 }
+
 
 
 
@@ -178,6 +182,7 @@ grid-template-columns: repeat(1,100%);
       <input type="radio" id="prestaciones" name="categories" value="prestaciones">
       <input type="radio" id="dias_feriados" name="categories" value="dias_feriados">
       <input type="radio" id="vestimenta" name="categories" value="vestimenta">
+      <input type="radio" id="seguridad" name="categories" value="seguridad">
 
       <ol class="filters">
         <li>
@@ -197,6 +202,9 @@ grid-template-columns: repeat(1,100%);
         </li>
         <li>
           <label for="vestimenta">Vestimenta</label>
+        </li>
+        <li>
+          <label for="seguridad">Seguridad</label>
         </li>
      
       </ol>
@@ -246,6 +254,15 @@ grid-template-columns: repeat(1,100%);
             <figure>
               <a href="#" target="_blank">
                 <img src="/Intranet-TubosMonterrey/html/img/POLITICAS COMEDOR.jpg"  width="100%"  alt="">
+              </a>
+            </figure>
+          </article>
+        </li>
+        <li class="post" data-category="seguridad">
+          <article>
+            <figure>
+              <a href="#" target="_blank">
+                <img src="assets/images/politics/seguidad.png" width="100%" class="" alt="">
               </a>
             </figure>
           </article>

@@ -217,24 +217,34 @@
 
 
                     <?php
-                    require "assets/php/bd.php";
+                 //   require "assets/php/bd.php";
+                   
+
 
                     $user = new conBD();
                     $u = $user->seleccionar(
                         "empleados",
-                        " status = 1 order by nombre ASC "
+                        " estatus = 1 order by nombre ASC "
                     );
 
-                    //   print_r($u );
+                    
+
+                 //    var_dump( count(sqlsrv_fetch_array($u, SQLSRV_FETCH_ASSOC)) );
+
+       
+
+
                     $html = "";
                     $img = "'img/people-03.jpg'";
 
-                    if (count($u) == 0) {
-                        echo "No se han encontrado resultados.";
-                    } else {
+            
                         $row["imagen"] = '"img/people-01.jpg"';
 
-                        foreach ($u as $row) {
+                        while($row = sqlsrv_fetch_array($u, SQLSRV_FETCH_ASSOC)) {
+                        //  print_r($row);
+                        
+
+                       //   var_dump($u ["nombre"] );
                             $html .=
                                 '
                                                
@@ -273,7 +283,7 @@
                         }
 
                         echo $html;
-                    }
+                    
                     ?>
 
 

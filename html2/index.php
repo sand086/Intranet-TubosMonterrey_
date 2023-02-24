@@ -1,3 +1,4 @@
+<?php include_once('assets/php/prueba.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,12 +55,16 @@
     <?php require_once('menu.php') ?>
     <?php require_once('anuncios.php') ?>
     <?php require_once('politicas_reglamentos.php'); ?>
+    <?php require_once('noticias.php'); ?>
     <?php require_once('cobertura.php'); ?>
     <?php require_once('timeline_nuestrahistoria.php'); ?>
     <?php require_once('directorio.php'); ?>
 	<?php require_once('celebraciones.php'); ?>
 	<?php require_once('aniversarios.php'); ?>
 	<?php require_once('organigrama.php'); ?>
+  <?php require_once('comunicacion_interna.php'); ?>
+
+  <?php require_once('interaccion.php'); ?>
 	<?php require_once('footer.php'); ?>
     
   </div>
@@ -79,6 +84,8 @@
   <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
   <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
   <script src="assets/modules/fullcalendar/fullcalendar.min.js"></script>
+  <script src="assets/modules/chart.min.js"></script>
+
 
   <!-- Page Specific JS File -->
 
@@ -590,7 +597,36 @@ centerPadding: '100px',
 
 </script>
 
+<script>
 
+$("#slider_news").owlCarousel({
+  items: 3,
+  nav: true,
+  dots:true,
+		slideTransition:'linear',
+  margin: 20,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  loop: true,
+  responsive: {
+	0: {
+      items: 1
+    },
+    380: {
+      items: 2
+    },
+    1000: {
+      items: 3
+    },
+
+    1400: {
+      items: 4
+    }
+  }
+});
+
+
+</script>
 
 
 <script>
@@ -626,10 +662,12 @@ centerPadding: '100px',
 
 $("#mSelect").change(function(){
 
-  var title_org = '';
-var empleados_array = '';
+var title_org = '';
 var title ='';
-var area = '';
+var parametros ;
+var area = $(this).val();
+var  empleados_array = [];
+
 
 title = document.createElement("h1");
       title.style.position = 'absolute';
@@ -638,13 +676,6 @@ title = document.createElement("h1");
       title.style.textAlign = 'center';
       title.style.color = '#757575';
       title.style.margin = '60px auto 10px auto';
-
-
-  console.log(title);
-
-	var area = $(this).val();
-
-  console.log($(this).val());
 
 	switch(area){
     case "1":
@@ -699,17 +730,27 @@ title = document.createElement("h1");
       break;
     case "11":
 
-      console.log('sd');
+    
       title_org = 'operaciones';
-      empleados_array = 
-        [
-          { id: 1, name: "Denny Curtis", title: "CEO", photo1: "https://cdn.balkan.app/shared/1.jpg"},
+      area_id = 2;
+
+
+
+        
+
+/*       for(let index = 0; index < response.length(); index++){
+
+
+      
+      
+        } */
+
+/* 
+        { id: 1, name: "Denny Curtis", title: "CEO", photo1: "https://cdn.balkan.app/shared/1.jpg"},
           { id: 2, pid: 1, name: "Ashley Barnett", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
           { id: 3, pid: 1, name: "Caden Ellison", title: "Denny Curtis", photo1: "https://cdn.balkan.app/shared/4.jpg" },
           { id: 4, pid: 1, ppid: 3, name:"Mauricio Rocha"}
-        ];
-
-
+ */
 
       break;
 
@@ -720,21 +761,91 @@ title = document.createElement("h1");
   }
 
 
+ 
+        parametros = { 'area_id': area_id };
+
+        $.ajax({
+            data: JSON.stringify(parametros) ,
+            url: 'assets/php/organigrama.php',
+            type: 'post',
+            beforeSend: function() {},
+            success: function(response) {
+             // $("#tree").empty();
+              //$(".tree").append(response);
+
+              var response_data = JSON.parse(response);
+
+              console.log(JSON.parse(response));
+
+
+              for(let item = 0; item < response_data.length; item++){
+                console.log(item);
+
+
+                if(item = 0){
+                    empleados = { 
+                    id: item+1, 
+                    name: response_data[item].nombreCompleto, 
+                    title: response_data[item].puesto, 
+                    photo1: "https://cdn.balkan.app/shared/1.jpg"
+                  
+                  };
+                }else{
+
+                  console.log("entra");
+
+                  var puesto = response_data[item].puesto;
+
+                  if(puesto.includes('Director')){var pid = 2;}
+                  else if(puesto.includes('Gerente')){var pid = 3;}
+                  else if(puesto.includes('Asistente')){var pid = 4;}
+                  else if(puesto.includes('Coordinador')){var pid = 5;}
+                  else if(puesto.includes('Auditor')){var pid = 6;}
+                  else if(puesto.includes('Auxiliar')){var pid = 7;}
+                  else if(puesto.includes('Jefe')){var pid = 8;}
+                  else{
+                    pid = 1;
+                  }
+
+
+                  empleados = { 
+                    id: item+1,
+                    pid:  pid,
+                    name: response_data[item].nombreCompleto, 
+                    title: response_data[item].puesto, 
+                    photo1: "https://cdn.balkan.app/shared/1.jpg"
+                  
+                  };
+
+                }
+
+
+                
+
+                empleados_array.push(empleados);
+                console.log(empleados_array);
+                
+              }
 
 
 
-      title.innerHTML = title_org;
-      chart.element.appendChild(title);
 
-  
+                 
+                  title.innerHTML = title_org;
+                  chart.element.appendChild(title);
+                  chart.load(empleados_array);
       
 
 
-  chart.load(empleados_array);
+            },
+            error: function(response) {
+              console.log('error');
+              console.log(response);
+            }
+        });
 
 
-  console.log(title);
-        
+
 
   
 
@@ -744,6 +855,118 @@ title = document.createElement("h1");
 
 
 </script>
+
+
+<script>
+
+$( ".modal_lecturas" ).on( "click" , function() {
+
+   let value_btn_modal_lectura =  $(this).val(); //tiene que remplazarse por id en base de datos 
+   let title_modal_lecturas = '<b>';
+   let url_frame_pdf = ''; // "https://www.proturbiomarspa.com/files/_pdf-prueba.pdf" 
+   let modal_3_body = '<iframe height="500" width="100%" src="' + url_frame_pdf +'" frameborder="0" ></iframe>';
+ // console.log(value_btn_modal_lectura);
+
+   switch (value_btn_modal_lectura) {
+      case 'Ladones_de_tiempo':
+        
+        title_modal_lecturas = 'Ladones de tiempo';
+
+        break;
+      case 'Nuestros_productos':
+        title_modal_lecturas = 'Nuestros productos';
+
+        break;
+
+      case 'Proactivo_o_reactivo':
+        title_modal_lecturas = 'Eres ¿proactivo o reactivo?';
+
+        break;
+      default:
+        console.log(`Sorry, we are out of ${expr}.`);
+    }
+
+ 
+    title_modal_lecturas += '</b>';
+
+    let array_modal_lecturas = {
+          body: modal_3_body, 
+          center: true,
+          size:'modal-lg',
+          title: title_modal_lecturas,
+          buttons: [
+              {
+                text: 'Cerrar',
+                class: 'btn btn-secondary close1',
+                handler: function(current_modal) {
+                  $.destroyModal(current_modal);
+                  $( ".modal_lecturas" ).off();
+                }
+              }
+            ]
+
+        };
+
+    $("#" + value_btn_modal_lectura).fireModal(array_modal_lecturas);
+        
+          
+
+});
+
+
+
+
+/*  */
+
+
+
+
+</script>
+<script>
+  var ctx = document.getElementById("myChart2").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+    datasets: [{
+      label: 'Promedio mes',
+      data: [2.93, 2 , 1.20,  1.25,  2.20,  1.88, 2.56, 3, 1.40,  2.25,  2.20,  0.88],
+      borderWidth: 2,
+      backgroundColor: '#6777ef',
+      borderColor: '#6777ef',
+      borderWidth: 2.5,
+      pointBackgroundColor: '#ffffff',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        gridLines: {
+          drawBorder: false,
+          color: '#f2f2f2',
+        },
+        ticks: {
+          beginAtZero: true,
+          stepSize: 4
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          display: true
+        },
+        gridLines: {
+          display: false
+        }
+      }]
+    },
+  }
+});
+</script>
+
 
 </body>
 </html>
