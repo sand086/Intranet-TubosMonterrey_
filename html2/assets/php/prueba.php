@@ -206,9 +206,25 @@ public $conexion;
   {
 
 
-    $select = "nombre , apellido_pat , apellido.mat";
     $tabla = "empleados";
-    $condicion = " WHERE estatus = 1 ";
+    $select = '';
+
+    $select .=  $tabla.".id_empleado, ";
+    $select .=  $tabla.".nombre, ";
+    $select .=  $tabla.".apellido_pat, ";
+    $select .=  $tabla.".apellido_mat, ";
+    $select .=  $tabla.".fecha_nacimiento ";
+
+
+
+
+
+  //  var_dump( $select );
+
+    $condicion = " 
+                  WHERE ".$tabla.".estatus = 1 order by MONTH(".$tabla.".fecha_nacimiento) ASC ";
+
+                  
     $params = array();
     $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
     $resultado = sqlsrv_query($this->conexion,"SELECT $select FROM $tabla $condicion" ,  $params ,$options );
@@ -216,8 +232,10 @@ public $conexion;
     $arrayAbreviaturas = array(
       "Fco.", "Mª", "Fdez.", "Lpez.", "G.ª" , "Hdz.", "Glz." ,"Lor.", "Mtz.", "Rdgz." ,"Gmez." , "Vqz." , "Aglr.", "Bdo.", "Stgo.", "Vte.", "Edo.", "Rgo.", "Fdo.", "Escud." , "Dmgz.", "Fernz.", "Jimenz.", "Gut.", "Mtin", 
     );
+    $arraySinAbreviar = array(
+      "Francisco.", "Maria", "Fernandez", "Lopez", "Garcia" , "Hernandez", "Gonzalez" ,"Lorenzo", "Martinez", "Rodiguez" ,"Gomez" , "Vazquez" , "Aguilar", "Bernardo", "Santiago", "Vicenten", "Eduardo", "Rodigo", "Fernando", "Escudero" , "Dominguez", "Fernandez", "Jimenez", "Gut.", "Mtin", 
+    );
 
-    
   
 
     if($resultado === false) {

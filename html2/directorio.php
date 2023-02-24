@@ -16,39 +16,43 @@
               background-color: rgba(255, 255, 255, 0.2);
               border: 0;
               padding: 12px 15px;
-              color: #fff;
+              /* color: #fff; */
             }
 
             .career-form .form-control::-webkit-input-placeholder {
               /* Chrome/Opera/Safari */
-              color: #fff;
+            /*   color: #fff; */
             }
 
             .career-form .form-control::-moz-placeholder {
               /* Firefox 19+ */
-              color: #fff;
+              /* color: #fff; */
             }
 
             .career-form .form-control:-ms-input-placeholder {
               /* IE 10+ */
-              color: #fff;
+              /* color: #fff; */
             }
 
             .career-form .form-control:-moz-placeholder {
               /* Firefox 18- */
-              color: #fff;
+              /* color: #fff; */
             }
 
             .career-form .custom-select {
               background-color: rgba(255, 255, 255, 0.2);
               border: 0;
               padding: 12px 15px;
-              color: #fff;
+              
               width: 100%;
               border-radius: 5px;
               text-align: left;
               height: auto;
               background-image: none;
+            }
+
+            .career-form .custom-select input::placeholder{
+              color: #fff;
             }
 
             .career-form .custom-select:focus {
@@ -192,17 +196,17 @@
                     <div class="row">
                       <div class="col-md-6 col-lg-8 my-3">
                         <div class="input-group position-relative">
-                          <input type="text" name="txtbusca" id="txtbusca" placeholder="Busca un empleado" class="form-control">
+                          <input type="text" name="txtbusca" id="txtbusca" style="color:#fff" placeholder="Busca un empleado" class="form-control">
                         </div>
                       </div>
 
                       <div class="col-md-6 col-lg-4 my-3">
                         <div class="select-container">
                           <select class="custom-select">
-                            <option selected="">Select Job Type</option>
-                            <option value="1">Ui designer</option>
-                            <option value="2">JS developer</option>
-                            <option value="3">Web developer</option>
+                            <option selected="">Area</option>
+                            <option value="1">Operaciones</option>
+                            <option value="2">Telemarketing</option>
+                            <option value="3">Ventas calle</option>
                           </select>
                         </div>
                       </div>

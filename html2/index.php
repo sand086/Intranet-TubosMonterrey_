@@ -428,94 +428,118 @@ jQuery(document).ready(function($){
   </script>
 
   <script>
-    "use strict";
+  
 
-$("#calendar").fullCalendar({
-  contentHeight: 'auto',
-  height: 'auto',
-  header: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'month,agendaWeek'
-  },
-  defaultView: 'month',
-  editable: false,
-  events: [
-    {
-      title: 'HBD Rocio Gzlz Toris',
-      start: '2023-02-9',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#000'
-    },
-    {
-      title: "HBD Esteban F. Llera",
-      start: '2023-02-14',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff'
-    },
-    {
-      title: "HBD Julio C. Mrtz. Hrdz.",
-      start: '2023-01-10T11:30:00',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff'
-    },
-    {
-      title: "HBD Gabriela Cervantes G.",
-      start: '2023-02-11',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff'
-    },
-    {
-      title: "HBD Jose M. Garcia Gzlz.",
-      start: '2023-02-24',
-      end: '2023-01-27',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff'
-    },
-    {
-      title: "HBD Silvia Mrtz Lopez",
-      start: '2023-02-24T13:15:00',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff',
-    },
-    {
-      title: "HBD David Aguilar B.",
-      start: '2023-02-28',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff',
-    },
-    {
-      title: "HBD Jaqueline I. Lara H.",
-      start: '2023-02-19',
-      backgroundColor: "#007bff",
-      borderColor: "#007bff",
-      textColor: '#fff',
-    },
-    {
-      title: "Constitucion Mexicana",
-      start: '2023-02-03',
-      backgroundColor: "#00b347",
-      borderColor: "#00b347",
-      textColor: '#fff',
-    },
+  const fecha_hoy = new Date();
+  var anio = fecha_hoy.getFullYear();
 
-    {
-      title: "Suspencion de actividades",
-      start: '2023-02-14',
-      backgroundColor: "#c41c00",
-      borderColor: "#c41c00",
-      textColor: '#fff',
-    },
-  ]
+  const colorHBD = "#007bff";
+  const txtcolorHBD = "#fff";
+  var empleadosHBD_array = [];
 
+
+
+
+parametros = '.';
+
+$.ajax({
+    data: JSON.stringify(parametros) ,
+    url: 'assets/php/calendar.php',
+    type: 'post',
+    beforeSend: function() {
+      $('#calendar').append('<a href="#" class="btn disabled btn-primary btn-progress" id="progress_calendar">Progress</a>');
+    },
+    success: function(response) {
+
+      $('#progress_calendar').remove();
+     // $("#tree").empty();
+      //$(".tree").append(response);
+
+    //  var response_data = JSON.parse(response);
+
+   // console.log(response);
+     var response_data = JSON.parse(response);
+   //  console.log(response_data);
+
+
+
+      for(let item_i = 0; item_i < response_data.length ; item_i++){
+      //  console.log(item_i);
+      var dateHBD_Obj ;
+      var mes = '';
+      var dia = '';
+
+
+      //  var hoy = response_data[item_i].fecha_nacimiento.date.getDate();
+//  var mesActual = response_data[item_i].fecha_nacimiento.date.getMonth() + 1; 
+
+           dateHBD_Obj = new Date(response_data[item_i].fecha_nacimiento.date);
+           mes = dateHBD_Obj.getMonth();
+           dia = dateHBD_Obj.getDate();
+
+          
+           // console.log( mes.toString().length);
+           if(mes.toString().length == 1){
+      
+            mes = "0"+ mes;
+           }
+           if(dia.toString().length == 1){
+           // console.log('entra2');
+            dia = "0"+ dia;
+           }
+          
+
+          let dateHBD = anio + '-' + mes +  '-' + dia;
+
+          //console.log(dateHBD_Obj);
+
+          var empleadosHBD = { 
+
+            title: response_data[item_i].nombreCompleto, 
+            start: dateHBD, 
+            backgroundColor: colorHBD,
+            borderColor: colorHBD,
+            textColor: txtcolorHBD
+          
+          };
+       //   console.log(empleadosHBD);
+
+
+
+        
+
+        empleadosHBD_array.push(empleadosHBD);
+
+        
+      }
+
+
+     // console.log(empleadosHBD_array);
+      $("#calendar").fullCalendar({
+        contentHeight: 'auto',
+        height: 'auto',
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek'
+        },
+        defaultView: 'month',
+        editable: false,
+        events: empleadosHBD_array 
+        
+      });
+
+
+    },
+    error: function(response) {
+      console.log('error');
+      console.log(response);
+    }
 });
+
+
+
+
 
   </script>
 <!-- 
