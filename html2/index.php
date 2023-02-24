@@ -386,7 +386,8 @@ jQuery(document).ready(function($){
       $('#txtbusca').keyup(function() {
         let value = $(this).val();
         if (value.length == 0) { //si el campo no esta vacio
-          console.log('Hola mundo ');
+
+          var parametros = '';
           $.ajax({
             data: parametros,
             url: 'assets/php/busqueda.php',
@@ -394,7 +395,7 @@ jQuery(document).ready(function($){
             beforeSend: function() {},
             success: function(response) {
               $(".salida").empty();
-              $(".salida").append(response);
+              $(".salida").html(response);
 
               console.log(response);
             },

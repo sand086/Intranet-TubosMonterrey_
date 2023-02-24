@@ -216,11 +216,7 @@
 
 
                     $user = new conBD();
-                    $totalEmpleados = $user->seleccionarcount(
-                      "*",
-                        "empleados",
-                        " WHERE estatus = 1 "
-                    );
+                    $totalEmpleados = $user->seleccionarcount();
 
                     $totalEmpleados = sqlsrv_num_rows( $totalEmpleados );
                     ?>
@@ -233,20 +229,12 @@
 
 
                     <?php
-                    
 
-                 //    var_dump( count(sqlsrv_fetch_array($u, SQLSRV_FETCH_ASSOC)) );
-
-                    $u = $user->seleccionar(
-                      "empleados",
-                      " estatus = 1 order by nombre ASC "
-                  );
+                    $u = $user->seleccionarLimit();
 
 
                     $html = "";
                     $img = "'img/people-03.jpg'";
-
-            
                         $row["imagen"] = '"img/people-01.jpg"';
 
                         while($row = sqlsrv_fetch_array($u, SQLSRV_FETCH_ASSOC)) {
@@ -278,10 +266,14 @@
                                 '
                                                                 </li>
                                                                 <li class="mr-md-4">
-                                                                    <i class="zmdi zmdi-money mr-2"></i> Departamento de marketing
+                                                                    <i class="zmdi zmdi-money mr-2"></i> ' .
+                                                                    $row["area"] .
+                                                                    '
                                                                 </li>
                                                                 <li class="mr-md-4">
-                                                                    <i class="zmdi zmdi-time mr-2"></i> Secretaria
+                                                                    <i class="zmdi zmdi-time mr-2"></i> ' .
+                                                                    $row["puesto"] .
+                                                                    '
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -304,7 +296,7 @@
 
 
                     <!-- START Pagination -->
-                    <nav aria-label="Page navigation">
+<!--                     <nav aria-label="Page navigation">
                       <ul class="pagination pagination-reset justify-content-center">
                         <li class="page-item disabled">
                           <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
@@ -322,7 +314,7 @@
                           </a>
                         </li>
                       </ul>
-                    </nav>
+                    </nav> -->
                     <!-- END Pagination -->
                   </div>
                 </div>

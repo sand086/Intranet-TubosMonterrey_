@@ -105,5 +105,4 @@ if (isset($_POST['txtbusca'])) {
 
     echo  $html;
   }
-}
- */
+} */

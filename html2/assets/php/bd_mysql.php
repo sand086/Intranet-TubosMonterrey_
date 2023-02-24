@@ -1,5 +1,5 @@
 <?php
-class conBD
+/* class conBD
 {
   private $host = "localhost";
   private $usuario = "root";
@@ -29,7 +29,7 @@ class conBD
 
 
 }
-
+ */
 
 
 ?>

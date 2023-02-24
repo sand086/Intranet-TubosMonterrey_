@@ -53,12 +53,37 @@ public $conexion;
         die( print_r( sqlsrv_errors(), true));
     }
   }
-  public function buscar($tabla, $condicion)
+  public function buscar($busqueda)
   {
-    $resultado = sqlsrv_query($this->conexion,"SELECT * FROM $tabla WHERE $condicion");
+    $limit = 1;
+    $select = '';
+    $tabla = "empleados";
+    $tabla2 = "puestos";
+    $tabla3 = "area";
 
 
-  
+    $select .=  $tabla.".id_empleado, ";
+    $select .=  $tabla.".nombre, ";
+    $select .=  $tabla.".apellido_pat, ";
+    $select .=  $tabla.".apellido_mat, ";
+    $select .=  $tabla.".correo, ";
+    $select .=  $tabla.".puesto_id, ";
+    $select .=  $tabla.".foto, ";
+    $select .=  $tabla2.".nombre AS puesto, ";
+    $select .=  $tabla3.".nombre AS area";
+
+
+    $condicion = " INNER JOIN ".$tabla2." 
+                   ON ".$tabla2.".id_puestos = ".$tabla." .puesto_id
+                   INNER JOIN ".$tabla3." 
+                   ON ".$tabla3.".id_areas = ".$tabla." .area_id
+                   WHERE ".$tabla." .estatus = 1 AND ".$tabla.".nombre like '%" . $busqueda . "%'
+                  order by ".$tabla.".nombre ASC ";
+   
+
+    $resultado = sqlsrv_query($this->conexion,"SELECT TOP(". $limit.") $select FROM $tabla $condicion");
+
+
 
     if($resultado === false) {
         return false;
@@ -88,6 +113,50 @@ public $conexion;
   }
 
 
+  public function seleccionarLimit()
+  {
+
+    $limit = 5;
+    $select = '';
+    $tabla = "empleados";
+    $tabla2 = "puestos";
+    $tabla3 = "area";
+
+
+    $select .=  $tabla.".id_empleado, ";
+    $select .=  $tabla.".nombre, ";
+    $select .=  $tabla.".apellido_pat, ";
+    $select .=  $tabla.".apellido_mat, ";
+    $select .=  $tabla.".correo, ";
+    $select .=  $tabla.".puesto_id, ";
+    $select .=  $tabla.".foto, ";
+    $select .=  $tabla2.".nombre AS puesto, ";
+    $select .=  $tabla3.".nombre AS area";
+
+
+    $condicion = " INNER JOIN ".$tabla2." 
+                   ON ".$tabla2.".id_puestos = ".$tabla." .puesto_id
+                   INNER JOIN ".$tabla3." 
+                   ON ".$tabla3.".id_areas = ".$tabla." .area_id
+                   WHERE ".$tabla." .estatus = 1 
+                  order by ".$tabla.".nombre ASC ";
+   
+
+    $resultado = sqlsrv_query($this->conexion,"SELECT TOP(". $limit.") $select FROM $tabla $condicion");
+
+
+  
+
+    if($resultado === false) {
+       // return false;
+        die(var_dump(sqlsrv_errors(), true));
+    }else{
+        
+        return $resultado;
+    }
+    return false;
+  }
+
   public function seleccionarJoinOrg($select, $tabla, $condicion)
   {
     $resultado = sqlsrv_query($this->conexion,"SELECT $select FROM $tabla $condicion");
@@ -109,14 +178,46 @@ public $conexion;
 
 
 
-  public function seleccionarcount($select, $tabla, $condicion)
+  public function seleccionarcount()
   {
 
+
+    $select = "nombre";
+    $tabla = "empleados";
+    $condicion = " WHERE estatus = 1 ";
     $params = array();
     $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
     $resultado = sqlsrv_query($this->conexion,"SELECT $select FROM $tabla $condicion" ,  $params ,$options );
 
+  
 
+    if($resultado === false) {
+       // return false;
+        die(var_dump(sqlsrv_errors(), true));
+    }else{
+        
+        return $resultado;
+    }
+    return false;
+  }
+  
+
+  public function seleccionarCalendarHBD()
+  {
+
+
+    $select = "nombre , apellido_pat , apellido.mat";
+    $tabla = "empleados";
+    $condicion = " WHERE estatus = 1 ";
+    $params = array();
+    $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+    $resultado = sqlsrv_query($this->conexion,"SELECT $select FROM $tabla $condicion" ,  $params ,$options );
+
+    $arrayAbreviaturas = array(
+      "Fco.", "Mª", "Fdez.", "Lpez.", "G.ª" , "Hdz.", "Glz." ,"Lor.", "Mtz.", "Rdgz." ,"Gmez." , "Vqz." , "Aglr.", "Bdo.", "Stgo.", "Vte.", "Edo.", "Rgo.", "Fdo.", "Escud." , "Dmgz.", "Fernz.", "Jimenz.", "Gut.", "Mtin", 
+    );
+
+    
   
 
     if($resultado === false) {
