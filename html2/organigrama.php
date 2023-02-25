@@ -22,7 +22,6 @@
           <option value="11">Operaciones</option>
         </select>
         <br>
-        <input type="button" id="options" value="enviar" class="btn btn-danger" disabled/>
       </div>
     </form>
 

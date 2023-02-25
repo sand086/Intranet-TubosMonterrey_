@@ -684,7 +684,7 @@ var title_org = '';
 var title ='';
 var parametros ;
 var area = $(this).val();
-var  empleados_array = [];
+var  empleados_array_ = [];
 
 
 title = document.createElement("h1");
@@ -801,6 +801,8 @@ title = document.createElement("h1");
 
 
                 if(response_data[item].nivel == 0){
+
+                  console.log("entra");
                     empleados = { 
                     id: item+1, 
                     name: response_data[item].nombreCompleto, 
@@ -808,14 +810,8 @@ title = document.createElement("h1");
                     photo1: "https://cdn.balkan.app/shared/1.jpg"
                   
                   };
-                  console.log(empleados);
+       
                 }else{
-
-                 
-
-                  var puesto = response_data[item].puesto;
-                   console.log(puesto);
-
 
                   empleados = { 
                     id: item+1,
@@ -831,18 +827,18 @@ title = document.createElement("h1");
 
                 
 
-                empleados_array.push(empleados);
+                empleados_array_.push(empleados);
       
                 
               }
 
 
-              console.log(empleados_array);
+              console.log(empleados_array_);
 
                  
                   title.innerHTML = title_org;
                   chart.element.appendChild(title);
-                  chart.load(empleados_array);
+                  chart.load(empleados_array_);
       
 
 
